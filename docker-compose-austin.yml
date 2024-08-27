@@ -1,0 +1,29 @@
+version: '3'
+services:
+  austin:
+    build:
+      context: ./
+    ports:
+      - "7777:7777"
+    restart: always
+    container_name: austin
+    environment:
+      - SET_CONTAINER_TIMEZONE=true
+      - CONTAINER_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
+      - JAVA_OPTS=-Daustin.login.official.account.enable=false
+      - austin.database.ip=10.8.0.18
+      - austin.database.username=root
+      - austin.database.password=123456
+      - austin.redis.ip=10.8.0.18
+      - austin.redis.port=6379
+      - austin.redis.password=
+      - austin.kafka.ip=10.8.0.18
+      - austin.kafka.port=9092
+      - austin.xxl.job.ip=10.8.0.18
+      - austin.xxl.job.port=8091
+    networks:
+      - app
+
+networks:
+  app:
