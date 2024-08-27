@@ -27,6 +27,9 @@ public class LoginUtils {
     @Value("${spring.profiles.active}")
     private String env;
 
+    @Value("${austin.login.official.account.enable}")
+    private Boolean loginOfficialAccountEnable;
+
     /**
      * 测试环境 使用
      * 获取 WeChatLoginConfig 对象
@@ -49,7 +52,7 @@ public class LoginUtils {
      */
     public boolean needLogin() {
         try {
-            if (CommonConstant.ENV_TEST.equals(env)) {
+            if (CommonConstant.ENV_TEST.equals(env) && Boolean.TRUE.equals(loginOfficialAccountEnable)) {
                 WeChatLoginConfig bean = applicationContext.getBean(OfficialAccountParamConstant.WE_CHAT_LOGIN_CONFIG, WeChatLoginConfig.class);
                 if (Objects.nonNull(bean)) {
                     return true;

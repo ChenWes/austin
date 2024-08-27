@@ -5,6 +5,7 @@ services:
       context: ./
     ports:
       - "7777:7777"
+      - "6666:6666"
     restart: always
     container_name: austin
     environment:
@@ -12,6 +13,8 @@ services:
       - CONTAINER_TIMEZONE=Asia/Shanghai
       - TZ=Asia/Shanghai
       - JAVA_OPTS=-Daustin.login.official.account.enable=false
+      - austin.nacos.addr.ip=10.8.0.18
+      - austin.nacos.addr.port=8848
       - austin.database.ip=10.8.0.18
       - austin.database.username=root
       - austin.database.password=123456
@@ -22,6 +25,9 @@ services:
       - austin.kafka.port=9092
       - austin.xxl.job.ip=10.8.0.18
       - austin.xxl.job.port=8091
+      - austin.xxl.job.executor.ip=10.8.0.18
+      - austin.xxl.executor.port=6666
+      - austin.xxl.job.accessToken=8CD7DBB9C1B5DF001A76C73C5AAD042B94BA80A467752160D8FC7478625043813074AF12460E3CE4E770E7027CA5F9E9E2699E80155EC7DFCAB066E65C357247
     networks:
       - app
 
