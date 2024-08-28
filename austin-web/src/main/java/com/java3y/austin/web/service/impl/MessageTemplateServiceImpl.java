@@ -57,6 +57,21 @@ public class MessageTemplateServiceImpl implements MessageTemplateService {
             if (CharSequenceUtil.isNotBlank(param.getKeywords())) {
                 predicateList.add(cb.like(root.get("name").as(String.class), "%" + param.getKeywords() + "%"));
             }
+            if (param.getIdType() != null) {
+                predicateList.add(cb.equal(root.get("idType").as(Integer.class), param.getIdType()));
+            }
+            if (param.getSendChannel() != null) {
+                predicateList.add(cb.equal(root.get("sendChannel").as(Integer.class), param.getSendChannel()));
+            }
+            if (param.getTemplateType() != null) {
+                predicateList.add(cb.equal(root.get("templateType").as(Integer.class), param.getTemplateType()));
+            }
+            if (param.getShieldType() != null) {
+                predicateList.add(cb.equal(root.get("shieldType").as(Integer.class), param.getShieldType()));
+            }
+            if (param.getMsgType() != null) {
+                predicateList.add(cb.equal(root.get("msgType").as(Integer.class), param.getMsgType()));
+            }
             predicateList.add(cb.equal(root.get("isDeleted").as(Integer.class), CommonConstant.FALSE));
             predicateList.add(cb.equal(root.get("creator").as(String.class), creator));
             Predicate[] p = new Predicate[predicateList.size()];

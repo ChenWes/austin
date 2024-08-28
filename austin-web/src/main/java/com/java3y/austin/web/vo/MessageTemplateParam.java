@@ -56,4 +56,29 @@ public class MessageTemplateParam {
      * 模版名称
      */
     private String keywords;
+
+    /**
+     * 发送的Id类型
+     */
+    private Integer idType;
+
+    /**
+     * 发送渠道
+     */
+    private Integer sendChannel;
+
+    /**
+     * 模板类型
+     */
+    private Integer templateType;
+
+    /**
+     * 屏蔽类型
+     */
+    private Integer shieldType;
+
+    /**
+     * 消息类型
+     */
+    private Integer msgType;
 }
